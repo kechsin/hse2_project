@@ -36,8 +36,8 @@ channels["art"] = [
     "http://www.youtube.com/@samosoboymedia",  # 5
     "https://www.youtube.com/@user-kl6vv2do1v",  # 6 изобразительное
     "https://www.youtube.com/@TheArtsmuseum",  # 7 изобразительное
-    "https://www.youtube.com/user/GARAGECCC",  # 8 современное искусство
-    "https://www.youtube.com/user/TheBadComedian/videos",  # 9 кино
+    "https://www.youtube.com/@GARAGEMCA",  # 8 современное искусство
+    "https://www.youtube.com/@TheBadComedian",  # 9 кино
     "https://www.youtube.com/@kinopoisk"  # 10 кино
 ]
 
@@ -73,11 +73,11 @@ channels["funny"] = [
     "https://www.youtube.com/@improcom",  # 3
     "https://www.youtube.com/@fridaytv",  # 4
     "https://www.youtube.com/@barinthecity",  # 5
-    "https://www.youtube.com/channel/UCA0Xum6Bxx-rhmrog1A1ISQ",  # 6
-    "https://www.youtube.com/user/kvn",  # 7
-    "https://www.youtube.com/user/SmetanaTV",  # 8
-    "https://www.youtube.com/user/PrototypesLIVE",  # 9
-    "https://www.youtube.com/channel/UCn9bv143ECsDMw-kJCNN7QA"  # 10
+    "https://www.youtube.com/@KatyaAdushkinaa",  # 6
+    "https://www.youtube.com/@kvn",  # 7
+    "https://www.youtube.com/@SmetanaTV",  # 8
+    "https://www.youtube.com/@klikklak",  # 9
+    "https://www.youtube.com/@chickencurryshow"  # 10
 ]
 
 channels["games"] = [
