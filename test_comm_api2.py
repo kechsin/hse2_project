@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
 
-api_key = 'AIzaSyDOKK0RsjW04zq74W1qRr8Hg9Xh_gZtAq8'
+with open("secret.txt") as f:
+    api_key = f.read().strip()
 
 
 def video_comments(video_id):
