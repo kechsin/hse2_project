@@ -10,4 +10,4 @@
 get_all_comments.py запускает функции из claster_get.py по каждому из кластеров. Список скачанных ID видео, скачанные комментарии, и заметки об ошибках кладутся в папку data.
 Чтобы запустить get_all_comments.py, вам нужно получить api-key тут: https://console.cloud.google.com/apis и положить его в файл secret.txt
 ## II. Определить тональность
-get_sentiments.py отвечает за то, что мы пробегаемся по всем файлам типа comments_{cluster_name}.txt из data и смотрим все тональности. Они идут в файл sentiment_data.json. 
+get_sentiments.py отвечает за то, что мы пробегаемся по всем файлам типа comments_{cluster_name}.txt из data и смотрим все тональности. Они идут в файл sentiment_data.json.

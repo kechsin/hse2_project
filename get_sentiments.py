@@ -20,17 +20,17 @@ clusters = ["music", "politics", "science", "art", "sport", "funny", "games"]
 
 clusters_sents = {}
 for i in clusters:
-    current_cluster = {'neut': 0, 'pos': 0, 'neg': 0}
+    current_cluster = {'neutral': 0, 'positive': 0, 'negative': 0}
     f = open(f"data/comments_{i}.txt", encoding="utf8")
     comments = f.readlines()
     for com in comments:
         a = predict(com.strip())
         if a[0] == 0:
-            current_cluster['neut'] += 1
+            current_cluster['neutral'] += 1
         elif a[0] == 1:
-            current_cluster['pos'] += 1
+            current_cluster['positive'] += 1
         elif a[0] == 2:
-            current_cluster['neg'] += 1
+            current_cluster['negative'] += 1
     clusters_sents[i] = current_cluster
 
 f = open("sentiment_data.json", "w")

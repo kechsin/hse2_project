@@ -1,4 +1,9 @@
 Download following libraries to run project:
+json
 google-api-python-client
 scrapetube
 transformers
+torch
+matplotlib
+numpy
+pundas
