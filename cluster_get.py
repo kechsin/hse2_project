@@ -14,7 +14,7 @@ def save_videos(cluster_name, lim):
         try:
             videos = videos + [j['videoId'] for j in list(videos_i)]
         except:
-            f = open(f"data/{cluster_name}_failed.txt", "a")
+            f = open(f"data/failed_{cluster_name}.txt", "a")
             f.write("getting video-ids: " + i + "\n")
             f.close()
     f2 = open(f"data/videos_{cluster_name}.txt", "w")
@@ -22,53 +22,42 @@ def save_videos(cluster_name, lim):
         f2.write(i + "\n")
 
 
-def video_comments(video_id, api_key, limit, cluster):
+def video_comments(video_id, api_key, limit, cluster):  # всю эту функцию я откуда-то взяла и мало меняла
     n = 0
     comments = []
-
-    # creating youtube resource object
     youtube = build('youtube', 'v3',
                     developerKey=api_key)
-
-    # retrieve youtube video results
     try:
         video_response = youtube.commentThreads().list(
             part='snippet,replies',
             videoId=video_id
         ).execute()
     except:
-        f = open(f"data/{cluster}_failed.txt", "a")
+        f = open(f"data/failed_{cluster}.txt", "a")
         f.write("Getting comments: " + video_id + "\n")
         f.close()
         return []
-
-    # iterate video response
     while video_response and n < limit:
-
-        # extracting required info
-        # from each result object
         for item in video_response['items']:
-
-            # Extracting comments
             comment = item['snippet']['topLevelComment']['snippet']['textDisplay']
             comments.append(comment.replace('\n', ' '))
             n += 1
-            # counting number of reply of comment
             replycount = item['snippet']['totalReplyCount']
-
-            # if reply is there
             if replycount > 0:
+                try:
+                    for reply in item['replies']['comments']:
+                        # Extract reply
+                        reply_text = reply['snippet']['textDisplay']
 
-                # iterate through all reply
-                for reply in item['replies']['comments']:
-                    # Extract reply
-                    reply_text = reply['snippet']['textDisplay']
-
-                    # Store reply is list
-                    comments.append(reply_text.replace('\n', ' '))
-                    n += 1
-                    if n > limit:
-                        return comments
+                        # Store reply is list
+                        comments.append(reply_text.replace('\n', ' '))
+                        n += 1
+                        if n > limit:
+                            return comments
+                except:
+                    f = open(f"data/failed_{cluster}.txt", "a")
+                    f.write("Getting comment replies: " + video_id + "\n")
+                    f.close()
 
         # Again repeat
         if 'nextPageToken' in video_response:
