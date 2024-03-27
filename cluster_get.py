@@ -11,7 +11,12 @@ def save_videos(cluster_name, lim):
     videos = []
     for i in channels:
         videos_i = scrapetube.get_channel(i, limit=lim)
-        videos = videos + [j['videoId'] for j in list(videos_i)]
+        try:
+            videos = videos + [j['videoId'] for j in list(videos_i)]
+        except:
+            f = open(f"data/{cluster_name}_failed.txt", "a")
+            f.write("getting video-ids: " + i + "\n")
+            f.close()
     f2 = open(f"data/videos_{cluster_name}.txt", "w")
     for i in videos:
         f2.write(i + "\n")
@@ -32,7 +37,7 @@ def video_comments(video_id, api_key, limit, cluster):
             videoId=video_id
         ).execute()
     except:
-        f = open(f"{cluster}_failed.txt", "a")
+        f = open(f"data/{cluster}_failed.txt", "a")
         f.write("Getting comments: " + video_id + "\n")
         f.close()
         return []
