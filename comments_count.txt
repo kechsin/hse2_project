@@ -1,0 +1,8 @@
+music 5095
+politics 10007
+science 6197
+art 7586
+sport 8955
+funny 10462
+games 11094
+all 59396
